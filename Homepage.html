@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shreyash Kiran Chaudhari</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+      background-attachment: fixed;
+      color: #e0e0e0;
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+      opacity: 0;
+      animation: fadeIn 1s ease-in forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    /* Shooting Stars Background */
+    .shooting-star {
+      position: fixed;
+      width: 2px;
+      height: 100px;
+      background: linear-gradient(-45deg, #fff, rgba(255, 255, 255, 0));
+      opacity: 0.7;
+      transform: rotate(-45deg);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .shooting-star:nth-child(1) {
+      top: 10%;
+      left: 10%;
+      animation: shooting 4s ease-in-out infinite;
+      animation-delay: 0s;
+    }
+
+    .shooting-star:nth-child(2) {
+      top: 20%;
+      left: 30%;
+      animation: shooting 4s ease-in-out infinite;
+      animation-delay: 1s;
+    }
+
+    .shooting-star:nth-child(3) {
+      top: 30%;
+      left: 50%;
+      animation: shooting 4s ease-in-out infinite;
+      animation-delay: 2s;
+    }
+
+    .shooting-star:nth-child(4) {
+      top: 40%;
+      left: 70%;
+      animation: shooting 4s ease-in-out infinite;
+      animation-delay: 3s;
+    }
+
+    .shooting-star:nth-child(5) {
+      top: 60%;
+      left: 20%;
+      animation: shooting 4s ease-in-out infinite;
+      animation-delay: 0.5s;
+    }
+
+    @keyframes shooting {
+      0% {
+        transform: translateX(0) translateY(0) rotate(-45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(300px) translateY(150px) rotate(-45deg);
+        opacity: 0;
+      }
+    }
+
+    header {
+      background: rgba(31, 31, 31, 0.95);
+      backdrop-filter: blur(10px);
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.6);
+    }
+
+    header h1 {
+      margin: 0 0 10px;
+      font-size: 1.8rem;
+    }
+
+    nav a {
+      margin: 0 10px;
+      color: #61dafb;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #21a1f1;
+      text-decoration: underline;
+    }
+
+    .contact {
+      font-size: 0.9rem;
+      margin-top: 10px;
+    }
+
+    .contact a {
+      color: #61dafb;
+      text-decoration: none;
+    }
+
+    .contact a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 200px auto 50px;
+      padding: 0 20px;
+      position: relative;
+      z-index: 10;
+    }
+
+    section {
+      margin-bottom: 60px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideInUp 0.6s ease forwards;
+    }
+
+    section:nth-child(1) { animation-delay: 0.1s; }
+    section:nth-child(2) { animation-delay: 0.2s; }
+    section:nth-child(3) { animation-delay: 0.3s; }
+    section:nth-child(4) { animation-delay: 0.4s; }
+    section:nth-child(5) { animation-delay: 0.5s; }
+    section:nth-child(6) { animation-delay: 0.6s; }
+    section:nth-child(7) { animation-delay: 0.7s; }
+    section:nth-child(8) { animation-delay: 0.8s; }
+
+    @keyframes slideInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h2 {
+      color: #21a1f1;
+      border-bottom: 1px solid #333;
+      padding-bottom: 6px;
+      margin-bottom: 20px;
+      font-size: 1.6rem;
+    }
+
+    .item-box {
+      background: rgba(30, 30, 30, 0.8);
+      backdrop-filter: blur(5px);
+      margin-bottom: 10px;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 6px rgba(97,218,251,0.2);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(97,218,251,0.1);
+    }
+
+    .item-box:hover {
+      background: rgba(38, 38, 38, 0.9);
+      box-shadow: 0 0 12px rgba(97,218,251,0.4);
+      transform: translateY(-2px);
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 170px;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.4rem;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 5px;
+        font-size: 0.9rem;
+      }
+
+      .contact {
+        font-size: 0.8rem;
+      }
+
+      main {
+        margin-top: 250px;
+      }
+
+      .shooting-star {
+        display: none; /* Hide shooting stars on mobile for performance */
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Shooting stars -->
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+
+  <header>
+    <h1>Shreyash Kiran Chaudhari</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#activities">Activities</a>
+      <a href="#social">Social</a>
+      <a href="#summary">Summary</a>
+    </nav>
+    <div class="contact">
+      <a href="mailto:chaudhari.shreyash.23033@iitgoa.ac.in">chaudhari.shreyash.23033@iitgoa.ac.in</a> | 8010596457 |
+      <a href="https://linkedin.com/in/shreyash-chaudhari" target="_blank">LinkedIn</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="about">
+      <h2>About Me</h2>
+      <p>I am eager to work, learn new things, and gain skills before starting a full-time job.</p>
+      <p><strong>Languages:</strong> Marathi, English (C2), Hindi (C2)</p>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <div class="item-box">B.Tech, Mathematics and Computing, IIT Goa (CPI: 6.62)</div>
+      <div class="item-box">12th - Matoshri Jr College, Nashik (78.8%)</div>
+      <div class="item-box">10th - St. Francis High School, Nashik (94.8%)</div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="item-box">Artificial Intelligence / Machine Learning</div>
+      <div class="item-box">Frontend (HTML, CSS, JavaScript)</div>
+      <div class="item-box">LaTeX</div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="item-box">Image Classification Project (CNN)</div>
+      <div class="item-box">House Price Prediction</div>
+      <div class="item-box">To-Do List Web App</div>
+    </section>
+
+    <section id="achievements">
+      <h2>Achievements</h2>
+      <div class="item-box">AIR 5207 in JEE Advanced</div>
+      <div class="item-box">99.21 percentile in JEE Mains</div>
+      <div class="item-box">99.75 percentile in MHT-CET</div>
+      <div class="item-box">Active on Codeforces & LeetCode</div>
+    </section>
+
+    <section id="activities">
+      <h2>Activities & Honors</h2>
+      <div class="item-box">Core Member - GDSC, IIT Goa</div>
+      <div class="item-box">Club Head - Meraki Dance Club</div>
+      <div class="item-box">Inter IIT Basketball Player</div>
+      <div class="item-box">Winner - IIT Dharwad Cultural Fest (Solo Dance)</div>
+    </section>
+
+    <section id="social">
+      <h2>Social Activities</h2>
+      <div class="item-box">Swachh Bharat Drive - Gandhi Jayanti</div>
+      <div class="item-box">Dance/Nukkad Natak - Independence/Republic Day</div>
+    </section>
+
+    <section id="summary">
+      <h2>Summary</h2>
+      <p>I want to grow and upskill myself through projects, internships, and real-world exposure.</p>
+    </section>
+  </main>
+
+  <script>
+    // Smooth scrolling and active nav highlighting
+    document.addEventListener('DOMContentLoaded', function() {
+      const navLinks = document.querySelectorAll('nav a');
+      
+      // Smooth scroll for navigation links
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          const targetSection = document.querySelector(targetId);
+          if (targetSection) {
+            targetSection.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+
+      // Highlight active section in navigation
+      function updateActiveNav() {
+        const fromTop = window.scrollY + 200;
+        
+        navLinks.forEach(link => {
+          const section = document.querySelector(link.getAttribute('href'));
+          if (section) {
+            if (section.offsetTop <= fromTop && 
+                section.offsetTop + section.offsetHeight > fromTop) {
+              navLinks.forEach(l => l.classList.remove('active'));
+              link.classList.add('active');
+            }
+          }
+        });
+      }
+
+      window.addEventListener('scroll', updateActiveNav);
+      updateActiveNav(); // Initial call
+    });
+  </script>
+</body>
+</html>
