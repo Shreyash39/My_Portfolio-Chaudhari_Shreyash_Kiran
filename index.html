@@ -82,20 +82,21 @@
     .typing {
       font-size: 4vw;
       color: #fff;
-      white-space: nowrap;
-      border-right: 4px solid #fff;
+      white-space: pre;
       overflow: hidden;
-      animation: typing 4s steps(33, end), blink-caret 0.5s step-end infinite;
     }
 
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 33ch }
+    .cursor {
+      display: inline-block;
+      width: 4px;
+      height: 1em;
+      background-color: #fff;
+      animation: blink-caret 1s step-start infinite;
+      vertical-align: bottom;
     }
 
     @keyframes blink-caret {
-      from, to { border-color: transparent }
-      50% { border-color: white; }
+      50% { background-color: transparent; }
     }
 
     @media (max-width: 768px) {
@@ -114,27 +115,60 @@
   <div class="shooting-star"></div>
 
   <div class="container" id="introContainer">
-    <h1 class="typing" id="typingText">Welcome to My Portfolio Web Site</h1>
+    <h1 class="typing" id="typingText"></h1>
   </div>
 
   <script>
-    // After typing completes (4s), fix width
-    setTimeout(() => {
-      const text = document.getElementById('typingText');
-      text.style.width = 'fit-content';
-      text.style.borderRight = 'none';
-    }, 4000);
+    const lines = [
+      "Welcome",
+      "  To",
+      "My Portfolio",
+      "  Web Site"
+    ];
+    
+    const typingText = document.getElementById("typingText");
+    let lineIndex = 0;
+    let charIndex = 0;
+    let currentLine = "";
+    const speed = 100; // typing speed in ms
+    
+    const cursor = document.createElement("span");
+    cursor.className = "cursor";
+    typingText.appendChild(cursor);
+    
+    function type() {
+      if (lineIndex < lines.length) {
+        currentLine = lines[lineIndex];
+        if (charIndex < currentLine.length) {
+          cursor.insertAdjacentText("beforebegin", currentLine[charIndex]);
+          charIndex++;
+          setTimeout(type, speed);
+        } else {
+          // Add a line break and move to the next line
+          typingText.insertBefore(document.createElement("br"), cursor);
+          lineIndex++;
+          charIndex = 0;
+          setTimeout(type, speed);
+        }
+      } else {
+        // Typing completed, remove cursor after delay and proceed with fade-out
+        setTimeout(() => {
+          cursor.remove();
+          
+          // Add fade-out effect and navigate to homepage
+          setTimeout(() => {
+            const container = document.getElementById('introContainer');
+            container.classList.add('fade-out');
 
-    // Add fade-out effect and navigate to homepage
-    setTimeout(() => {
-      const container = document.getElementById('introContainer');
-      container.classList.add('fade-out');
-
-      setTimeout(() => {
-        // Since we can't use sessionStorage, we'll just navigate directly
-        window.location.href = 'Homepage.html';
-      }, 1000);
-    }, 5000);
+            setTimeout(() => {
+              window.location.href = 'Homepage.html';
+            }, 1000);
+          }, 1000);
+        }, 1000);
+      }
+    }
+    
+    type();
   </script>
 </body>
 </html>
