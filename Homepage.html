@@ -1,156 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chaudhari Shreyash Kiran - Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <!-- Shooting stars -->
-  <div class="shooting-star"></div>
-  <div class="shooting-star"></div>
-  <div class="shooting-star"></div>
-  <div class="shooting-star"></div>
-  <div class="shooting-star"></div>
+  <!-- Shooting Stars Background -->
+  <div class="shooting-stars" id="shooting-stars"></div>
 
   <header>
     <h1>Chaudhari Shreyash Kiran</h1>
     <nav>
-      <a href="#about">About</a>
-      <a href="#education">Education</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#achievements">Achievements</a>
-      <a href="#responsibilities">Leadership</a>
-      <a href="#activities">Activities</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#education" class="nav-link">Education</a>
+      <a href="#experience" class="nav-link">Experience</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#achievements" class="nav-link">Achievements</a>
+      <a href="#responsibilities" class="nav-link">Leadership</a>
+      <a href="#activities" class="nav-link">Activities</a>
     </nav>
   </header>
 
-  <main>
-    <section id="about">
+  <section id="about" class="section">
+    <div class="content-container">
       <h2>About Me</h2>
       <div class="about-content">
         <div class="intro">
-          <p>I am a <strong>Second Year Undergraduate</strong> student pursuing <strong>BTech in Mathematics and Computing</strong> at <strong>Indian Institute of Technology Goa</strong>. </p>
-
+          <p>I am a Second Year Undergraduate student pursuing BTech in Mathematics and Computing at Indian Institute of Technology Goa.</p>
           <p>I am passionate about technology, dance, and sports, with a strong foundation in programming, web development, and financial markets.</p>
-
           <p>I am eager to work, learn new things, and gain skills through internships and real-world projects before starting my professional career.</p>
         </div>
-        
-        <div class="contact-details">
+        <div class="contact-info">
           <h3>Contact Information</h3>
           <ul class="contact-list">
-            <li><strong>Email:</strong> <a href="mailto:chaudhari.shreyash.23033@iitgoa.ac.in">chaudhari.shreyash.23033@iitgoa.ac.in</a></li>
+            <li><strong>Email:</strong> chaudhari.shreyash.23033@iitgoa.ac.in</li>
             <li><strong>Phone:</strong> +91 8010596457</li>
-            <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/chaudhari-shreyash-kiran-79804a2a7/" target="_blank">linkedin.com/in/chaudhari-shreyash-kiran</a></li>
-            <li><strong>GitHub:</strong> <a href="https://github.com/Shreyash39" target="_blank">github.com/Shreyash39</a></li>
             <li><strong>Address:</strong> Flat No 101, Shree Amey Apartment, Tatyashree Chowk, Tidke Nagar, Untawadi, Nashik</li>
+          </ul>
+          <div class="social-icons">
+            <a href="https://www.linkedin.com/in/chaudhari-shreyash-kiran-79804a2a7?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BRoDPpXT%2FTw2degy5KmQPoQ%3D%3D" target="_blank" class="social-icon">
+              <i class="fab fa-linkedin"></i>
+              <span>LinkedIn</span>
+            </a>
+            <a href="https://github.com/Shreyash39" target="_blank" class="social-icon">
+              <i class="fab fa-github"></i>
+              <span>GitHub</span>
+            </a>
+            <a href="https://leetcode.com/u/Shreyash39/" target="_blank" class="social-icon">
+              <i class="fas fa-code"></i>
+              <span>LeetCode</span>
+            </a>
+            <a href="https://codeforces.com/profile/Shreyash1379" target="_blank" class="social-icon">
+              <i class="fas fa-trophy"></i>
+              <span>Codeforces</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education" class="section">
+    <div class="content-container">
+      <h2>Education</h2>
+      <div class="grid-container">
+        <div class="content-card education-card">
+          <h3>BTech, Mathematics and Computing</h3>
+          <p class="institution">Indian Institute of Technology Goa</p>
+          <p class="score">CGPA: 6.84/10</p>
+          <p>2023 -- Present</p>
+        </div>
+        <div class="content-card education-card">
+          <h3>Class 12, HSC</h3>
+          <p class="institution">Matoshri Junior College, Nashik</p>
+          <p class="score">Aggregate: 78.8%</p>
+          <p>2021 -- 2023</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="section">
+    <div class="content-container">
+      <h2>Experience</h2>
+      <div class="grid-container">
+        <div class="content-card experience-card">
+          <div class="date-badge">March 2024 -- April 2024</div>
+          <h3>Course Group Project at IIT Goa</h3>
+          <p class="company">Under Dr. Clint Pazhayidam George</p>
+          <ul>
+            <li>Worked on a Web Dev Full stack project "To Do List" with various interesting and new features</li>
+            <li><a href="https://github.com/cs-102/team-A9-productivity.git" target="_blank" style="color: #61dafb;">GitHub Repository Link</a></li>
           </ul>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="education">
-      <h2>Education</h2>
-      <div class="item-box">
-        <strong>BTech, Mathematics and Computing</strong><br>
-        Indian Institute of Technology Goa<br>
-        <em>CGPA: 6.84/10</em> | 2023 -- Present
-      </div>
-      <div class="item-box">
-        <strong>Class 12, HSC</strong><br>
-        Matoshri Junior College, Nashik<br>
-        <em>Aggregate: 78.8%</em> | 2021 -- 2023
-      </div>
-    </section>
-
-    <section id="experience">
-      <h2>Experience</h2>
-      <div class="item-box">
-        <strong>Course Group Project at IIT Goa</strong><br>
-        <em>Under Dr. Clint Pazhayidam George</em> | March 2024 -- April 2024<br>
-        • Worked on a Web Dev Full stack project "To Do List" with various interesting and new features<br>
-        • <a href="https://github.com/cs-102/team-A9-productivity.git" target="_blank" style="color: #61dafb;">GitHub Repository Link</a>
-      </div>
-    </section>
-
-    <section id="projects">
+  <section id="projects" class="section">
+    <div class="content-container">
       <h2>Projects</h2>
-      <div class="item-box">
-        <strong>My-Portfolio Web Site</strong> | May 2025 -- Present<br>
-        • Built a Frontend Web Development project to keep a more interactive way of portfolio to showcase projects in detailed form<br>
-        • Live Project Visibilities using GitHub repo, easily changeable and cleaner to read<br>
-        • <strong>Technologies:</strong> HTML, CSS, JavaScript, Vercel Deployment<br>
-        • <a href="https://my-portfolio-chaudhari-shreyash-kiran.vercel.app/" target="_blank" style="color: #61dafb;">Live Website</a> | 
-        <a href="https://github.com/Shreyash39/My_Portfolio-Chaudhari_Shreyash_Kiran.git" target="_blank" style="color: #61dafb;">GitHub</a>
+      <div class="grid-container projects">
+        <div class="content-card project-card" data-live-link="https://my-portfolio-chaudhari-shreyash-kiran.vercel.app/">
+          <div class="date-badge">May 2025 -- Present</div>
+          <h3>My Portfolio Website</h3>
+          <ul>
+            <li>Developed an interactive and responsive portfolio to showcase projects and technical skills in a professional format</li>
+            <li>Integrated live project links and GitHub repositories for better visibility and version control</li>
+            <li>Technologies: HTML, CSS, JavaScript, GitHub, Vercel</li>
+            <li><a href="https://github.com/Shreyash39/My_Portfolio-Chaudhari_Shreyash_Kiran.git" target="_blank" style="color: #61dafb;">GitHub Repository</a></li>
+          </ul>
+          <div class="click-hint">Click to view live project</div>
+        </div>
+        <div class="content-card project-card" data-live-link="https://weather-app-taupe-phi-72.vercel.app/">
+          <div class="date-badge">May 2025</div>
+          <h3>Weather App</h3>
+          <ul>
+            <li>Built a real-time weather forecasting app using React.js and OpenWeatherMap API</li>
+            <li>Implemented API integration, dynamic UI updates, and geolocation-based data fetching</li>
+            <li>Technologies: React.js, HTML, CSS, JavaScript, API Integration, Vercel</li>
+            <li><a href="https://github.com/Shreyash39/Weather_app.git" target="_blank" style="color: #61dafb;">GitHub Repository</a></li>
+          </ul>
+          <div class="click-hint">Click to view live project</div>
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="skills">
+  <section id="skills" class="section">
+    <div class="content-container">
       <h2>Skills</h2>
-      <div class="item-box">
-        <strong>Programming Skills:</strong><br>
-        C, C++, Python, MATLAB, HTML, CSS, JavaScript, R
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3>Programming Skills</h3>
+          <p>C, C++, Python, MATLAB, HTML, CSS, JavaScript, R</p>
+        </div>
+        <div class="skill-category">
+          <h3>Frameworks & Libraries</h3>
+          <p>React.js</p>
+        </div>
+        <div class="skill-category">
+          <h3>Developer Tools</h3>
+          <p>Git, GitHub, Vercel, Chrome DevTools, LaTeX</p>
+        </div>
+        <div class="skill-category">
+          <h3>Computer Skills</h3>
+          <p>Web Development, Artificial Intelligence, Machine Learning, Deep Learning</p>
+        </div>
+        <div class="skill-category">
+          <h3>Financial Skills</h3>
+          <p>Macro and Microeconomics, Financial Markets, Stock Exchanges, Money and Capital Market, Balance Sheet Analysis</p>
+        </div>
+        <div class="skill-category">
+          <h3>Certification</h3>
+          <p>Completed FinCOM Finance course by IIT Ropar</p>
+        </div>
       </div>
-      <div class="item-box">
-        <strong>Technical Software Skills:</strong><br>
-        AutoCAD, LaTeX, GitHub
-      </div>
-      <div class="item-box">
-        <strong>Computer Skills:</strong><br>
-        Web Development, Artificial Intelligence, Machine Learning, Deep Learning
-      </div>
-      <div class="item-box">
-        <strong>Financial Skills:</strong><br>
-        Macro and Microeconomics, Financial Market, Stock Exchanges, Money and Capital Market, Balance Sheet Analysis<br>
-        • Completed <a href="https://www.linkedin.com/posts/chaudhari-shreyash-kiran-79804a2a7_i-am-celebrating-my-new-certification-from-activity-7209825343505891329-6neC?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEnd--QBCXkY2yjPHcjPZ9JFGVzap0uue5M" target="_blank" style="color: #61dafb;">FinCOM Finance course by IIT Ropar</a>
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="achievements">
+  <section id="achievements" class="section">
+    <div class="content-container">
       <h2>Achievements</h2>
-      <div class="item-box">
-        <strong>JEE Advanced:</strong> AIR 5207 | <strong>JEE Main:</strong> 99.21 percentile (2022-2023)
+      <div class="achievement-item">
+        <h3>Represented IIT Goa at IIT Dharwad Cultural Fest</h3>
+        <p>Participated in group Dance and Solo Dance, achieved 3rd Position in Solo Dance (2024-2025)</p>
       </div>
-      <div class="item-box">
-        Represented IIT Goa at IIT Dharwad Cultural Fest in group Dance and Solo Dance, with <strong>3rd Position in Solo Dance</strong> (2024-2025)
+      <div class="achievement-item">
+        <h3>JEE Advanced: AIR 5207 | JEE Main: 99.21%ile (2022-2023)</h3>
+        <p>Successfully qualified for admission to IIT Goa through competitive examination</p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="responsibilities">
-      <h2>Positions of Responsibility</h2>
-      <div class="item-box">
-        <strong>Club Head, Meraki (Dance Club of IIT Goa)</strong> | 2024 -- 2025<br>
-        Head position of IIT Goa Student Dance Club, leading more than 15 students
+  <section id="responsibilities" class="section">
+    <div class="content-container">
+      <h2>Leadership & Responsibilities</h2>
+      <div class="achievement-item">
+        <h3>GDSC Club Core Member</h3>
+        <p>Core Member of Google Developer Student Club at IIT Goa (2024 -- 2025)</p>
       </div>
-      <div class="item-box">
-        <strong>GDSC Club Core Member</strong> | 2024 -- 2025<br>
-        Core Member of Google Developer Student Club at IIT Goa
+      <div class="achievement-item">
+        <h3>Club Head, Meraki (Dance Club of IIT Goa)</h3>
+        <p>Head position of IIT Goa Student Dance Club, leading more than 15 students (2024 -- 2025)</p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="activities">
-      <h2>Activities & Hobbies</h2>
-      <div class="item-box">
-        <strong>Basketball Player:</strong> Represented IIT Goa at Inter IIT Sports meet 2024-25 at IIT Kanpur
+  <section id="activities" class="section">
+    <div class="content-container">
+      <h2>Activities & Interests</h2>
+      <div class="activity-item">
+        <h3>Basketball Player</h3>
+        <p>Represented IIT Goa at Inter IIT Sports meet 2024-25 at IIT Kanpur</p>
       </div>
-      <div class="item-box">
-        <strong>Dance Performances:</strong> Represented IIT Goa at IIT Dharwad Cultural Fest in group Dance and Solo Dance
+      <div class="activity-item">
+        <h3>Club Head of Meraki (Dance Club of IIT Goa)</h3>
+        <p>Leading and organizing dance events and performances</p>
       </div>
-      <div class="item-box">
-        <strong>Event Hosting:</strong> Hosted and participated in several college events (Salsa Night, Independence Day, Republic Day, Nukkad Natak etc.)
+      <div class="activity-item">
+        <h3>Cultural Representation</h3>
+        <p>Represented IIT Goa at IIT Dharwad Cultural Fest in group Dance and Solo Dance</p>
       </div>
-      <div class="item-box">
-        <strong>Social Service:</strong> Actively participated in Swachh Bharat Drive on Mahatma Gandhi Jayanti
+      <div class="activity-item">
+        <h3>Event Hosting & Participation</h3>
+        <p>Hosted and participated in several events in college (Salsa Night, Independence Day, Republic Day, Nukkad Natak etc)</p>
       </div>
-    </section>
-  </main>
-
-  <a href="index.html" class="top-right-button">←</a>
+      <div class="activity-item">
+        <h3>Social Service</h3>
+        <p>Actively participated in Swachh Bharat Drive on Mahatma Gandhi Jayanti</p>
+      </div>
+    </div>
+  </section>
 
   <script src="script.js"></script>
 </body>
