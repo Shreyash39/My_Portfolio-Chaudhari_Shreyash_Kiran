@@ -1,126 +1,94 @@
-// Smooth scrolling and active nav highlighting
 document.addEventListener('DOMContentLoaded', function() {
-  const navLinks = document.querySelectorAll('nav a');
-  
-  // Smooth scroll for navigation links
+  // Create shooting stars
+  function createShootingStar() {
+    const star = document.createElement('div');
+    star.className = 'star';
+    star.style.left = Math.random() * 100 + 'vw';
+    star.style.top = Math.random() * 100 + 'vh';
+    star.style.animationDuration = (2 + Math.random() * 3) + 's';
+    star.style.animationDelay = Math.random() * 2 + 's';
+    
+    document.getElementById('shooting-stars').appendChild(star);
+    
+    setTimeout(() => {
+      star.remove();
+    }, 5000);
+  }
+
+  // Create shooting stars periodically
+  setInterval(createShootingStar, 200);
+
+  // Smooth scrolling for navigation
+  const navLinks = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('.section');
+
   navLinks.forEach(link => {
     link.addEventListener('click', function(e) {
       e.preventDefault();
       const targetId = this.getAttribute('href');
       const targetSection = document.querySelector(targetId);
+      
       if (targetSection) {
         targetSection.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
+          behavior: 'smooth'
         });
       }
     });
   });
 
-  // Enhanced active section highlighting in navigation
-  function updateActiveNav() {
-    const fromTop = window.scrollY + 180; // Adjusted for better accuracy
+  // Section visibility and navigation highlighting
+  function updateVisibleSections() {
+    const scrollPosition = window.scrollY + window.innerHeight / 2;
     
-    navLinks.forEach(link => {
-      const section = document.querySelector(link.getAttribute('href'));
-      if (section) {
-        if (section.offsetTop <= fromTop && 
-            section.offsetTop + section.offsetHeight > fromTop) {
-          navLinks.forEach(l => l.classList.remove('active'));
-          link.classList.add('active');
-        }
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      
+      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        section.classList.add('visible');
+        const id = section.getAttribute('id');
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${id}`) {
+            link.classList.add('active');
+          }
+        });
+      } else if (scrollPosition < sectionTop - 100) {
+        section.classList.remove('visible');
       }
     });
-    
-    // Handle edge cases for first and last sections
-    if (window.scrollY < 100) {
-      navLinks.forEach(l => l.classList.remove('active'));
-      navLinks[0].classList.add('active'); // Activate "About" when at top
-    }
   }
 
-  // Throttle scroll event for better performance
-  let ticking = false;
-  function requestTick() {
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        updateActiveNav();
-        ticking = false;
-      });
-      ticking = true;
-    }
-  }
+  window.addEventListener('scroll', updateVisibleSections);
+  updateVisibleSections(); // Initialize
 
-  window.addEventListener('scroll', requestTick);
-  updateActiveNav(); // Initial call
-
-  // Add fade-in animation for sections on scroll
-  const observerOptions = {
-    threshold: 0.15,
-    rootMargin: '0px 0px -80px 0px'
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
+  // Project card click handlers
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('click', function(e) {
+      const liveLink = this.getAttribute('data-live-link');
+      if (liveLink && !e.target.closest('a')) {
+        window.open(liveLink, '_blank');
       }
     });
-  }, observerOptions);
-
-  // Observe all sections for animation
-  document.querySelectorAll('section').forEach(section => {
-    section.style.opacity = '0';
-    section.style.transform = 'translateY(40px)';
-    section.style.transition = 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
-    observer.observe(section);
   });
 
-  // Enhanced hover effects for contact list items
-  const contactItems = document.querySelectorAll('.contact-list li');
-  contactItems.forEach(item => {
-    item.addEventListener('mouseenter', function() {
-      this.style.transform = 'translateX(8px) scale(1.02)';
-      this.style.borderLeftWidth = '6px';
+  // Stop propagation for links inside project cards
+  document.querySelectorAll('.project-card a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+  });
+
+  // Add hover effects to cards
+  document.querySelectorAll('.content-card').forEach(card => {
+    card.addEventListener('mouseenter', function() {
+      this.style.transform = 'translateY(-10px) scale(1.02)';
     });
     
-    item.addEventListener('mouseleave', function() {
-      this.style.transform = 'translateX(0) scale(1)';
-      this.style.borderLeftWidth = '4px';
+    card.addEventListener('mouseleave', function() {
+      if (!this.classList.contains('project-card')) {
+        this.style.transform = 'translateY(0) scale(1)';
+      }
     });
   });
-
-  // Enhanced hover effects for item boxes
-  const itemBoxes = document.querySelectorAll('.item-box');
-  itemBoxes.forEach(box => {
-    box.addEventListener('mouseenter', function() {
-      this.style.transform = 'translateY(-5px) scale(1.02)';
-    });
-    
-    box.addEventListener('mouseleave', function() {
-      this.style.transform = 'translateY(0) scale(1)';
-    });
-  });
-
-  // Add sparkle effect to navigation links
-  navLinks.forEach(link => {
-    link.addEventListener('mouseenter', function() {
-      this.style.filter = 'brightness(1.2) saturate(1.3)';
-    });
-    
-    link.addEventListener('mouseleave', function() {
-      this.style.filter = 'brightness(1) saturate(1)';
-    });
-  });
-
-  // Back button navigation
-  const backButton = document.querySelector('.top-right-button');
-  if (backButton && backButton.getAttribute('href') === 'index.html') {
-    backButton.addEventListener('click', function(e) {
-      // Allow normal navigation to index.html
-      // Remove e.preventDefault() to let the link work normally
-      window.location.href = 'index.html';
-    });
-  }
 });
