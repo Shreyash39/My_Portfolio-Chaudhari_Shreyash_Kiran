@@ -287,10 +287,11 @@ h2::after {
   overflow: hidden;
 }
 
+/* Default hover for regular content cards */
 .content-card:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(97, 218, 251, 0.2);
-  border-color: rgba(97, 218, 251, 0.6);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(97, 218, 251, 0.2);
+  border-color: rgba(97, 218, 251, 0.5);
 }
 
 .content-card::before {
@@ -310,9 +311,27 @@ h2::after {
 
 /* Project Cards */
 .project-card {
-  cursor: pointer;
   min-height: 250px;
   position: relative;
+}
+
+/* Enhanced hover for project cards with live links */
+.project-card[data-live-link] {
+  cursor: pointer;
+}
+
+.project-card[data-live-link]:hover {
+  transform: translateY(-15px) scale(1.2);
+  box-shadow: 0 25px 50px rgba(97, 218, 251, 0.4);
+  border-color: rgba(97, 218, 251, 0.8);
+  z-index: 100;
+}
+
+/* Project cards without live links have normal hover */
+.project-card:not([data-live-link]):hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(97, 218, 251, 0.2);
+  border-color: rgba(97, 218, 251, 0.5);
 }
 
 .project-card .date-badge {
@@ -359,8 +378,18 @@ h2::after {
   right: 15px;
   font-size: 0.8rem;
   color: #61dafb;
-  opacity: 0.8;
+  opacity: 0;
   font-style: italic;
+  transition: opacity 0.3s ease;
+}
+
+/* Show click hint only for project cards with live links */
+.project-card[data-live-link] .click-hint {
+  opacity: 0.8;
+}
+
+.project-card[data-live-link]:hover .click-hint {
+  opacity: 1;
 }
 
 /* Education & Experience Cards */
@@ -460,6 +489,11 @@ h2::after {
   .grid-container {
     grid-template-columns: 1fr;
   }
+
+  /* Adjust hover scale for mobile */
+  .project-card[data-live-link]:hover {
+    transform: translateY(-10px) scale(1.1);
+  }
 }
 
 @media (max-width: 480px) {
@@ -474,5 +508,10 @@ h2::after {
 
   h2 {
     font-size: 2rem;
+  }
+
+  /* Further reduce hover scale for small screens */
+  .project-card[data-live-link]:hover {
+    transform: translateY(-8px) scale(1.08);
   }
 }
