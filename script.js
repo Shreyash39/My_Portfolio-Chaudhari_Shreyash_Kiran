@@ -62,8 +62,8 @@ document.addEventListener('DOMContentLoaded', function() {
   window.addEventListener('scroll', updateVisibleSections);
   updateVisibleSections(); // Initialize
 
-  // Project card click handlers
-  document.querySelectorAll('.project-card').forEach(card => {
+  // Project card click handlers - only for cards with live links
+  document.querySelectorAll('.project-card[data-live-link]').forEach(card => {
     card.addEventListener('click', function(e) {
       const liveLink = this.getAttribute('data-live-link');
       if (liveLink && !e.target.closest('a')) {
@@ -79,16 +79,42 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Add hover effects to cards
+  // Enhanced hover effects for cards
   document.querySelectorAll('.content-card').forEach(card => {
     card.addEventListener('mouseenter', function() {
-      this.style.transform = 'translateY(-10px) scale(1.02)';
+      // Check if it's a project card with live link for enhanced hover
+      if (this.classList.contains('project-card') && this.hasAttribute('data-live-link')) {
+        // Enhanced hover is handled by CSS
+        return;
+      } else if (this.classList.contains('project-card')) {
+        // Regular project card hover
+        this.style.transform = 'translateY(-5px) scale(1.02)';
+      } else {
+        // Regular content card hover
+        this.style.transform = 'translateY(-5px) scale(1.02)';
+      }
     });
     
     card.addEventListener('mouseleave', function() {
-      if (!this.classList.contains('project-card')) {
+      // Reset transform for non-CSS handled hovers
+      if (!this.classList.contains('project-card') || !this.hasAttribute('data-live-link')) {
         this.style.transform = 'translateY(0) scale(1)';
       }
     });
+  });
+
+  // Add cursor pointer style dynamically for project cards with live links
+  document.querySelectorAll('.project-card[data-live-link]').forEach(card => {
+    card.style.cursor = 'pointer';
+  });
+
+  // Add subtle animation to click hints
+  document.querySelectorAll('.project-card[data-live-link] .click-hint').forEach(hint => {
+    setInterval(() => {
+      hint.style.transform = 'scale(1.1)';
+      setTimeout(() => {
+        hint.style.transform = 'scale(1)';
+      }, 200);
+    }, 3000);
   });
 });
