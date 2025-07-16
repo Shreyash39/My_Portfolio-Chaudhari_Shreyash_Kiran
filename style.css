@@ -185,7 +185,7 @@ h2::after {
   line-height: 1.8;
 }
 
-.contact-info {
+.contact-info { /* This now only contains the contact list */
   background: rgba(255, 255, 255, 0.05);
   padding: 40px;
   border-radius: 20px;
@@ -197,44 +197,6 @@ h2::after {
   margin-bottom: 30px;
   font-size: 1.5rem;
   text-align: center;
-}
-
-/* Social Icons */
-.social-icons {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.social-icon {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
-  text-decoration: none;
-  color: #e0e0e0;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(97, 218, 251, 0.2);
-}
-
-.social-icon:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(97, 218, 251, 0.3);
-  background: rgba(97, 218, 251, 0.1);
-}
-
-.social-icon i {
-  font-size: 2rem;
-  margin-bottom: 10px;
-  color: #61dafb;
-}
-
-.social-icon span {
-  font-size: 0.9rem;
-  font-style: italic;
 }
 
 .contact-list {
@@ -260,6 +222,203 @@ h2::after {
   color: #61dafb;
   display: inline-block;
   min-width: 80px;
+}
+
+/* NEW STYLES FOR FLOATING CONTACT INFO HEADING AND ICONS */
+.contact-social-section {
+  margin-top: 80px; /* Increased spacing from the previous content */
+  width: 100%; /* Take full width of content-container */
+  text-align: center; /* Center the heading */
+}
+
+.contact-heading-float {
+  color: #61dafb;
+  text-align: center;
+  margin-bottom: 60px; /* Consistent with other h2s */
+  font-size: 3rem;
+  text-shadow: 0 0 20px rgba(97, 218, 251, 0.7);
+  position: relative;
+}
+
+.contact-heading-float::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #61dafb, transparent);
+  border-radius: 2px;
+}
+
+.primary-social-icons-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Flexible columns for top row */
+  gap: 50px; /* Increased gap for more spacing */
+  max-width: 1000px; /* Max width for the grid */
+  margin: 0 auto 30px auto; /* Center and add margin-bottom before the next icon row */
+  padding: 0 20px; /* Add horizontal padding for smaller screens */
+}
+
+.secondary-social-icons-container {
+  display: flex; /* Use flexbox for precise centering of two items */
+  justify-content: center; /* Center items horizontally */
+  align-items: center; /* Vertically center content if heights differ */
+  gap: 50px; /* Gap between Kaggle and Codolio */
+  margin: 0 auto 80px auto; /* Center and add generous margin-bottom */
+  max-width: 1000px; /* Match primary container max-width */
+  padding: 0 20px;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+
+.social-icon-new {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  transition: transform 0.3s ease; /* Only transform for the parent link */
+  font-weight: 500; /* Font weight for the text below the icon */
+}
+
+.social-icon-new:hover {
+  transform: translateY(-8px); /* More pronounced lift effect */
+}
+
+.social-icon-new i { /* Styles for Font Awesome icons */
+  font-size: 3.8rem; /* Consistent size for Font Awesome icons */
+  margin-bottom: 12px;
+  transition: color 0.3s ease; /* Transition for icon color changes */
+  color: inherit; /* Ensure default color inheritance if not explicitly set by brand color */
+}
+
+.social-icon-new img,
+.social-icon-new svg { /* Styles for image and SVG icons */
+  max-height: 55px; /* Consistent max height for all image/svg icons */
+  width: auto; /* Maintain aspect ratio */
+  margin-bottom: 12px; /* Space between icon and text */
+  display: block; /* Ensures proper margin and centering for images/SVGs */
+}
+
+/* Specific size adjustment for Codeforces logo because of its banner-like aspect ratio */
+.social-icon-new.codeforces img {
+    max-height: 35px; /* Smaller height for the wide Codeforces banner */
+}
+
+
+.social-icon-new span {
+  font-size: 1.1rem; /* Slightly larger text */
+  font-style: normal; /* Ensure text is not italic */
+  color: #e0e0e0; /* Explicitly set initial text color */
+  transition: color 0.3s ease; /* Smooth transition for text color */
+}
+
+.social-icon-new:hover span {
+  color: #61dafb; /* Hover color for text under the icon */
+}
+
+/* Specific brand colors for Font Awesome icons */
+.social-icon-new.linkedin i { color: #0A66C2; } /* LinkedIn Blue */
+.social-icon-new.github i { color: #FFFFFF; } /* GitHub White for dark backgrounds */
+
+
+/* Responsive Design adjustments */
+@media (max-width: 768px) {
+  .section {
+    padding: 100px 20px 20px;
+  }
+
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+  }
+
+  .contact-heading-float {
+    font-size: 2.5rem;
+  }
+
+  .primary-social-icons-container {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 35px;
+  }
+
+  .secondary-social-icons-container {
+    gap: 35px; /* Adjust gap for smaller screens */
+  }
+
+  .social-icon-new i {
+    font-size: 3rem;
+  }
+
+  .social-icon-new img,
+  .social-icon-new svg {
+    max-height: 45px;
+  }
+
+  .social-icon-new.codeforces img {
+      max-height: 25px; /* Adjust for smaller screen */
+  }
+
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card[data-live-link]:hover {
+    transform: translateY(-10px) scale(1.1);
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  .nav-link {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+
+  h2, .contact-heading-float {
+    font-size: 2rem;
+  }
+
+  .primary-social-icons-container {
+    grid-template-columns: repeat(2, 1fr); /* Two columns on very small screens */
+    gap: 100px;
+  }
+
+  .secondary-social-icons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px; /* Changed from 50px to 100px for more spacing */
+    margin: 0 auto 80px auto;
+    max-width: 10000px;
+    padding: 0 20px;
+    flex-wrap: wrap;
+  }
+
+  .social-icon-new i {
+    font-size: 2.5rem;
+  }
+
+  .social-icon-new img,
+  .social-icon-new svg {
+    max-height: 40px;
+  }
+
+  .social-icon-new.codeforces img {
+      max-height: 20px; /* Adjust for smallest screen */
+  }
+
+  .project-card[data-live-link]:hover {
+    transform: translateY(-8px) scale(1.08);
+  }
 }
 
 /* Grid Layouts for Content */
@@ -470,25 +629,46 @@ h2::after {
   .section {
     padding: 100px 20px 20px;
   }
-  
+
   .about-content {
     grid-template-columns: 1fr;
     gap: 40px;
   }
-  
+
   h2 {
     font-size: 2.5rem;
   }
 
-  .social-icons {
-    grid-template-columns: repeat(2, 1fr);
+  .contact-heading-float {
+    font-size: 2.5rem;
+  }
+
+  .primary-social-icons-container {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 35px;
+  }
+
+  .secondary-social-icons-container {
+    gap: 35px; /* Adjust gap for smaller screens */
+  }
+
+  .social-icon-new i {
+    font-size: 3rem;
+  }
+
+  .social-icon-new img,
+  .social-icon-new svg {
+    max-height: 45px;
+  }
+
+  .social-icon-new.codeforces img {
+      max-height: 25px; /* Adjust for smaller screen */
   }
 
   .grid-container {
     grid-template-columns: 1fr;
   }
 
-  /* Adjust hover scale for mobile */
   .project-card[data-live-link]:hover {
     transform: translateY(-10px) scale(1.1);
   }
@@ -498,17 +678,39 @@ h2::after {
   header h1 {
     font-size: 1.5rem;
   }
-  
+
   .nav-link {
     padding: 8px 12px;
     font-size: 0.8rem;
   }
 
-  h2 {
+  h2, .contact-heading-float {
     font-size: 2rem;
   }
 
-  /* Further reduce hover scale for small screens */
+  .primary-social-icons-container {
+    grid-template-columns: repeat(2, 1fr); /* Two columns on very small screens */
+    gap: 25px;
+  }
+
+  .secondary-social-icons-container {
+    flex-direction: column; /* Stack Kaggle and Codolio vertically on very small screens */
+    gap: 15px; /* Smaller gap when stacked */
+  }
+
+  .social-icon-new i {
+    font-size: 2.5rem;
+  }
+
+  .social-icon-new img,
+  .social-icon-new svg {
+    max-height: 40px;
+  }
+
+  .social-icon-new.codeforces img {
+      max-height: 20px; /* Adjust for smallest screen */
+  }
+
   .project-card[data-live-link]:hover {
     transform: translateY(-8px) scale(1.08);
   }
