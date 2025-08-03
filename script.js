@@ -117,4 +117,19 @@ document.addEventListener('DOMContentLoaded', function() {
       }, 200);
     }, 3000);
   });
+
+  let lastScrollY = window.scrollY;
+const header = document.querySelector('header');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > lastScrollY) {
+    // Scrolling down → hide header
+    header.style.transform = 'translateY(-100%)';
+  } else {
+    // Scrolling up → show header
+    header.style.transform = 'translateY(0)';
+  }
+  lastScrollY = window.scrollY;
+});
+
 });
