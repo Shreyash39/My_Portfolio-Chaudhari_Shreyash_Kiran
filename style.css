@@ -50,6 +50,20 @@ body {
   }
 }
 
+.resume-nav-link {
+  background: linear-gradient(135deg, #61dafb, #21a1f1);
+  color: #0a0a0a;
+  font-weight: bold;
+}
+
+.resume-nav-link:hover {
+  background: linear-gradient(135deg, #21a1f1, #61dafb);
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(97, 218, 251, 0.6);
+  transform: translateY(-2px);
+}
+
+
 /* Full-page Sections */
 .section {
   min-height: 100vh;
